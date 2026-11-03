@@ -177,6 +177,18 @@ start.bat
 
 When `frontend/dist` exists, FastAPI serves the built frontend from the backend application. Open [http://localhost:8000](http://localhost:8000).
 
+## Deploying to Render
+
+The repository includes a [`render.yaml`](./render.yaml) Blueprint for deploying the frontend and backend as one Render web service.
+
+1. Push the repository to GitHub.
+2. In Render, choose **New +** → **Blueprint** and select this repository.
+3. Create a MongoDB Atlas database and copy its connection string.
+4. In the Render service environment variables, set `MONGODB_URI` to the Atlas connection string.
+5. Deploy. Render provides the public application URL; the API is available under the same URL at `/api`.
+
+The frontend uses relative `/api` requests, so no frontend API URL setting is required. The Render health check uses `/api/health`.
+
 ## Environment configuration
 
 Set these environment variables before starting the backend when custom configuration is needed. The available variable reference is [.env.example](./.env.example).
