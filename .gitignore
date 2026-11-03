@@ -1,0 +1,24 @@
+# Python environments and generated files
+venv/
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+
+# Node dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Local configuration and user-generated analysis history
+.env
+.env.*
+!.env.example
+backend/app/data/history.json
+
+# Local editor and operating-system files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
