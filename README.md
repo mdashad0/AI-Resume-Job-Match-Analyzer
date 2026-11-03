@@ -192,10 +192,11 @@ The frontend uses relative `/api` requests, so no frontend API URL setting is re
 If configuring a Render web service manually instead of using the Blueprint, use:
 
 - **Build command:** `pip install -r requirements.txt && npm install --prefix frontend && npm run build --prefix frontend`
-- **Start command:** `cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- **Start command:** `python run.py`
 - **Health check path:** `/api/health`
 
 The root `requirements.txt` delegates to `backend/requirements.txt`, so the dependency install also works with Render's default root-directory build context.
+The root `run.py` launcher starts the backend from its `backend` directory, which is required when Render runs the command from the repository root.
 
 If deploying the frontend separately (for example, on Vercel), set the frontend environment variable `VITE_API_URL` to the public backend URL ending in `/api`, then redeploy the frontend. For example:
 
