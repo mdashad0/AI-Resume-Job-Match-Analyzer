@@ -197,6 +197,12 @@ If configuring a Render web service manually instead of using the Blueprint, use
 
 The root `requirements.txt` delegates to `backend/requirements.txt`, so the dependency install also works with Render's default root-directory build context.
 
+If deploying the frontend separately (for example, on Vercel), set the frontend environment variable `VITE_API_URL` to the public backend URL ending in `/api`, then redeploy the frontend. For example:
+
+```text
+VITE_API_URL=https://your-backend.example.com/api
+```
+
 ## Environment configuration
 
 Set these environment variables before starting the backend when custom configuration is needed. The available variable reference is [.env.example](./.env.example).

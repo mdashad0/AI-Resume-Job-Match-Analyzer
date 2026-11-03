@@ -25,6 +25,7 @@ import {
 import ScoreGauge from './components/ScoreGauge';
 import SkillBadge from './components/SkillBadge';
 import HistoryModal from './components/HistoryModal';
+import { apiUrl } from './api';
 
 export default function App() {
   // Input State
@@ -79,7 +80,7 @@ export default function App() {
 
   const fetchHealthStatus = async () => {
     try {
-      const res = await fetch('/api/health');
+      const res = await fetch(apiUrl('health'));
       if (res.ok) {
         const data = await res.json();
         setSystemStatus(data);
@@ -91,7 +92,7 @@ export default function App() {
 
   const fetchSampleData = async () => {
     try {
-      const res = await fetch('/api/sample-data');
+      const res = await fetch(apiUrl('sample-data'));
       if (res.ok) {
         const data = await res.json();
         setSampleData(data);
@@ -103,7 +104,7 @@ export default function App() {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch('/api/history');
+      const res = await fetch(apiUrl('history'));
       if (res.ok) {
         const data = await res.json();
         setHistory(data);
@@ -219,7 +220,7 @@ export default function App() {
       formData.append('candidate_name', useCName);
       formData.append('job_title', useJTitle);
 
-      const response = await fetch('/api/analyze', {
+      const response = await fetch(apiUrl('analyze'), {
         method: 'POST',
         body: formData
       });
@@ -248,7 +249,7 @@ export default function App() {
 
   const handleClearHistory = async () => {
     try {
-      await fetch('/api/history', { method: 'DELETE' });
+      await fetch(apiUrl('history'), { method: 'DELETE' });
       setHistory([]);
     } catch (e) {
       console.error('Failed to clear history', e);
