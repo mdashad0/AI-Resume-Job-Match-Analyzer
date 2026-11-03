@@ -189,6 +189,14 @@ The repository includes a [`render.yaml`](./render.yaml) Blueprint for deploying
 
 The frontend uses relative `/api` requests, so no frontend API URL setting is required. The Render health check uses `/api/health`.
 
+If configuring a Render web service manually instead of using the Blueprint, use:
+
+- **Build command:** `pip install -r requirements.txt && npm install --prefix frontend && npm run build --prefix frontend`
+- **Start command:** `cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- **Health check path:** `/api/health`
+
+The root `requirements.txt` delegates to `backend/requirements.txt`, so the dependency install also works with Render's default root-directory build context.
+
 ## Environment configuration
 
 Set these environment variables before starting the backend when custom configuration is needed. The available variable reference is [.env.example](./.env.example).
